@@ -1,0 +1,45 @@
+{
+  "import_formats": [
+    {
+      "identifier": "example-credit-card",
+      "account_name": "example-credit",
+      "column_mapping": {
+        "date": "Transaction Date",
+        "description": "Description",
+        "amount": "Amount"
+      },
+      "date_format": "2006-01-02",
+      "amount_multiplier": -1.0,
+      "blacklist_exact": [
+        "AUTO-PAY THANK YOU",
+        "PAYMENT"
+      ],
+      "blacklist_contains": []
+    },
+    {
+      "identifier": "example-bank",
+      "account_name": "example-bank",
+      "column_mapping": {
+        "date": "Date",
+        "description": "Description",
+        "amount": "Amount",
+        "balance": "Current balance"
+      },
+      "date_format": "2006-01-02",
+      "amount_multiplier": 1.0,
+      "track_balance": true,
+      "blacklist_exact": [
+        "Transfer",
+        "Bank Name"
+      ],
+      "blacklist_contains": [],
+      "special_rules": [
+        {
+          "description_exact": "VENMO",
+          "amount_exact": -1000.0,
+          "force_category": "Rent"
+        }
+      ]
+    }
+  ]
+} 
